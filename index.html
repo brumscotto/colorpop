@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,619 +15,651 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            overflow: hidden;
-        }
+```
+    body {
+        font-family: 'Arial', sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        overflow: hidden;
+    }
 
-        .game-container {
-            width: 100%;
-            max-width: 400px;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        }
+    .game-container {
+        width: 100%;
+        max-width: 400px;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
+    .header {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-        h1 {
-            color: #5a67d8;
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
+    h1 {
+        color: #5a67d8;
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .score-container {
-            display: flex;
-            justify-content: space-around;
-            margin-bottom: 20px;
-            gap: 10px;
-        }
+    .score-container {
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 20px;
+        gap: 10px;
+    }
 
-        .score-box {
-            background: #f7fafc;
-            padding: 15px;
-            border-radius: 15px;
-            text-align: center;
-            flex: 1;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
+    .score-box {
+        background: #f7fafc;
+        padding: 15px;
+        border-radius: 15px;
+        text-align: center;
+        flex: 1;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
 
-        .score-label {
-            font-size: 0.9em;
-            color: #718096;
-            margin-bottom: 5px;
-        }
+    .score-label {
+        font-size: 0.9em;
+        color: #718096;
+        margin-bottom: 5px;
+    }
 
-        .score-value {
-            font-size: 1.8em;
-            font-weight: bold;
-            color: #5a67d8;
-        }
+    .score-value {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #5a67d8;
+    }
 
-        .game-board {
-            display: grid;
-            grid-template-columns: repeat(8, 1fr);
-            grid-gap: 5px;
-            margin-bottom: 20px;
-            padding: 10px;
-            background: #e2e8f0;
-            border-radius: 15px;
-        }
+    .game-board {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        grid-gap: 5px;
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #e2e8f0;
+        border-radius: 15px;
+    }
 
-        .bubble {
-            aspect-ratio: 1;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.2s;
-            position: relative;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-        }
+    .bubble {
+        aspect-ratio: 1;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: transform 0.2s;
+        position: relative;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
 
-        .bubble:hover {
-            transform: scale(1.1);
-        }
+    .bubble:hover {
+        transform: scale(1.1);
+    }
 
-        .bubble.selected {
-            transform: scale(1.2);
-            opacity: 0.7;
-        }
+    .bubble.selected {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
 
-        .bubble.popping {
-            animation: pop 0.5s ease-out forwards;
-            pointer-events: none;
-        }
+    .bubble.popping {
+        animation: pop 0.5s ease-out forwards;
+        pointer-events: none;
+    }
 
-        @keyframes pop {
-            0% {
-                transform: scale(1);
-                opacity: 1;
-            }
-            50% {
-                transform: scale(1.3);
-            }
-            100% {
-                transform: scale(0);
-                opacity: 0;
-            }
+    @keyframes pop {
+        0% {
+            transform: scale(1);
+            opacity: 1;
         }
-
-        .btn {
-            width: 100%;
-            padding: 15px;
-            font-size: 1.2em;
-            font-weight: bold;
-            color: white;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        50% {
+            transform: scale(1.3);
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
+        100% {
+            transform: scale(0);
+            opacity: 0;
         }
+    }
 
-        .btn:active {
+    .btn {
+        width: 100%;
+        padding: 15px;
+        font-size: 1.2em;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+
+    .btn:active {
+        transform: translateY(0);
+    }
+
+    .floating-star {
+        position: fixed;
+        font-size: 2em;
+        pointer-events: none;
+        animation: float-up 2s ease-out forwards;
+        z-index: 1000;
+    }
+
+    @keyframes float-up {
+        0% {
+            opacity: 1;
+            transform: translateY(0) rotate(0deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-100px) rotate(360deg);
+        }
+    }
+
+    .combo-text {
+        position: fixed;
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #f6e05e;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        pointer-events: none;
+        animation: combo-bounce 1s ease-out forwards;
+        z-index: 1000;
+    }
+
+    @keyframes combo-bounce {
+        0% {
+            opacity: 0;
+            transform: scale(0) translateY(0);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.5) translateY(-20px);
+        }
+        100% {
+            opacity: 0;
+            transform: scale(1) translateY(-40px);
+        }
+    }
+
+    .game-over-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 2000;
+    }
+
+    .game-over-modal {
+        background: white;
+        padding: 40px;
+        border-radius: 20px;
+        text-align: center;
+        max-width: 300px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .game-over-modal h2 {
+        color: #5a67d8;
+        font-size: 2em;
+        margin-bottom: 20px;
+    }
+
+    .game-over-modal p {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+        color: #4a5568;
+    }
+
+    .timer-low {
+        animation: pulse 1s infinite;
+        color: #f56565 !important;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+
+    .time-bonus {
+        position: fixed;
+        font-size: 1.5em;
+        font-weight: bold;
+        color: #48bb78;
+        pointer-events: none;
+        animation: time-float 1s ease-out forwards;
+        z-index: 1000;
+    }
+
+    @keyframes time-float {
+        0% {
+            opacity: 1;
             transform: translateY(0);
         }
-
-        .floating-star {
-            position: fixed;
-            font-size: 2em;
-            pointer-events: none;
-            animation: float-up 2s ease-out forwards;
-            z-index: 1000;
+        100% {
+            opacity: 0;
+            transform: translateY(-50px);
         }
+    }
+</style>
+```
 
-        @keyframes float-up {
-            0% {
-                opacity: 1;
-                transform: translateY(0) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-100px) rotate(360deg);
-            }
-        }
-
-        .combo-text {
-            position: fixed;
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #f6e05e;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            pointer-events: none;
-            animation: combo-bounce 1s ease-out forwards;
-            z-index: 1000;
-        }
-
-        @keyframes combo-bounce {
-            0% {
-                opacity: 0;
-                transform: scale(0) translateY(0);
-            }
-            50% {
-                opacity: 1;
-                transform: scale(1.5) translateY(-20px);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(1) translateY(-40px);
-            }
-        }
-
-        .game-over-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 2000;
-        }
-
-        .game-over-modal {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            text-align: center;
-            max-width: 300px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .game-over-modal h2 {
-            color: #5a67d8;
-            font-size: 2em;
-            margin-bottom: 20px;
-        }
-
-        .game-over-modal p {
-            font-size: 1.2em;
-            margin-bottom: 20px;
-            color: #4a5568;
-        }
-
-        .timer-low {
-            animation: pulse 1s infinite;
-            color: #f56565 !important;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-
-        .time-bonus {
-            position: fixed;
-            font-size: 1.5em;
-            font-weight: bold;
-            color: #48bb78;
-            pointer-events: none;
-            animation: time-float 1s ease-out forwards;
-            z-index: 1000;
-        }
-
-        @keyframes time-float {
-            0% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateY(-50px);
-            }
-        }
-    </style>
 </head>
 <body>
     <div class="game-container">
         <div class="header">
             <h1>🌈 Color Pop! 🌈</h1>
         </div>
-        
-        <div class="score-container">
-            <div class="score-box">
-                <div class="score-label">Score</div>
-                <div class="score-value" id="score">0</div>
-            </div>
-            <div class="score-box">
-                <div class="score-label">Time</div>
-                <div class="score-value" id="timer">60</div>
-            </div>
-            <div class="score-box">
-                <div class="score-label">Best</div>
-                <div class="score-value" id="best">0</div>
-            </div>
-        </div>
-        
-        <div class="game-board" id="gameBoard"></div>
-        
-        <button class="btn" onclick="startNewGame()">New Game 🎮</button>
-    </div>
 
-    <div class="game-over-overlay" id="gameOverOverlay">
-        <div class="game-over-modal">
-            <h2>Time's Up! ⏰</h2>
-            <p>Final Score: <span id="finalScore">0</span></p>
-            <p id="newBest" style="color: #f6e05e; font-weight: bold; display: none;"></p>
-            <button class="btn" onclick="startNewGame()">Play Again 🎮</button>
+```
+    <div class="score-container">
+        <div class="score-box">
+            <div class="score-label">Score</div>
+            <div class="score-value" id="score">0</div>
+        </div>
+        <div class="score-box">
+            <div class="score-label">Time</div>
+            <div class="score-value" id="timer">60</div>
+        </div>
+        <div class="score-box">
+            <div class="score-label">Best</div>
+            <div class="score-value" id="best">0</div>
         </div>
     </div>
+    
+    <div class="game-board" id="gameBoard"></div>
+    
+    <button class="btn" onclick="resetGame()">New Game 🎮</button>
+</div>
 
-    <script>
-        const colors = [
-            '#FF6B6B', // Red
-            '#4ECDC4', // Teal
-            '#45B7D1', // Blue
-            '#F9CA24', // Yellow
-            '#26DE81'  // Green
-        ];
+<div class="game-over-overlay" id="gameOverOverlay">
+    <div class="game-over-modal">
+        <h2>Time's Up! ⏰</h2>
+        <p>Final Score: <span id="finalScore">0</span></p>
+        <p id="newBest" style="color: #f6e05e; font-weight: bold; display: none;"></p>
+        <button class="btn" onclick="resetGame()">Play Again 🎮</button>
+    </div>
+</div>
 
-        const boardSize = 8;
-        let board = [];
-        let score = 0;
-        let bestScore = 0;
-        let selectedBubbles = [];
-        let isSelecting = false;
-        let isProcessing = false;
-        let timeRemaining = 60;
-        let timerInterval = null;
-        let gameActive = false;
+<script>
+    const colors = [
+        '#FF6B6B', // Red
+        '#4ECDC4', // Teal
+        '#45B7D1', // Blue
+        '#F9CA24', // Yellow
+        '#26DE81'  // Green
+    ];
 
-        // Initialize best score display
-        document.getElementById('best').textContent = bestScore;
+    const boardSize = 8;
+    let board = [];
+    let score = 0;
+    let bestScore = 0;
+    let selectedBubbles = [];
+    let isSelecting = false;
+    let isProcessing = false;
+    let timeRemaining = 60;
+    let timerInterval = null;
+    let gameActive = true;
 
-        function getRandomColor() {
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
+    // Initialize best score display
+    document.getElementById('best').textContent = bestScore;
 
-        function initBoard() {
-            board = [];
-            for (let i = 0; i < boardSize; i++) {
-                board[i] = [];
-                for (let j = 0; j < boardSize; j++) {
-                    board[i][j] = getRandomColor();
-                }
-            }
-            renderBoard();
-        }
+    function getRandomColor() {
+        return colors[Math.floor(Math.random() * colors.length)];
+    }
 
-        function renderBoard() {
-            const gameBoard = document.getElementById('gameBoard');
-            gameBoard.innerHTML = '';
-            
-            for (let i = 0; i < boardSize; i++) {
-                for (let j = 0; j < boardSize; j++) {
-                    if (board[i][j]) {
-                        const bubble = document.createElement('div');
-                        bubble.className = 'bubble';
-                        bubble.style.backgroundColor = board[i][j];
-                        bubble.dataset.row = i;
-                        bubble.dataset.col = j;
-                        
-                        bubble.addEventListener('mousedown', startSelection);
-                        bubble.addEventListener('mouseover', continueSelection);
-                        bubble.addEventListener('touchstart', handleTouch);
-                        bubble.addEventListener('touchmove', handleTouchMove);
-                        
-                        gameBoard.appendChild(bubble);
-                    }
-                }
+    function initGame() {
+        board = [];
+        for (let i = 0; i < boardSize; i++) {
+            board[i] = [];
+            for (let j = 0; j < boardSize; j++) {
+                board[i][j] = getRandomColor();
             }
         }
+        renderBoard();
+        updateTimer();
+    }
 
-        function startSelection(e) {
-            if (isProcessing || !gameActive) return;
-            e.preventDefault();
-            const row = parseInt(e.target.dataset.row);
-            const col = parseInt(e.target.dataset.col);
-            isSelecting = true;
-            selectedBubbles = [{row, col, element: e.target}];
+    function renderBoard() {
+        const gameBoard = document.getElementById('gameBoard');
+        gameBoard.innerHTML = '';
+        
+        for (let i = 0; i < boardSize; i++) {
+            for (let j = 0; j < boardSize; j++) {
+                if (board[i][j]) {
+                    const bubble = document.createElement('div');
+                    bubble.className = 'bubble';
+                    bubble.style.backgroundColor = board[i][j];
+                    bubble.dataset.row = i;
+                    bubble.dataset.col = j;
+                    
+                    bubble.addEventListener('mousedown', startSelection);
+                    bubble.addEventListener('mouseover', continueSelection);
+                    bubble.addEventListener('touchstart', handleTouch);
+                    bubble.addEventListener('touchmove', handleTouchMove);
+                    
+                    gameBoard.appendChild(bubble);
+                }
+            }
+        }
+    }
+
+    function startSelection(e) {
+        if (isProcessing || !gameActive) return;
+        e.preventDefault();
+        const row = parseInt(e.target.dataset.row);
+        const col = parseInt(e.target.dataset.col);
+        isSelecting = true;
+        selectedBubbles = [{row, col, element: e.target}];
+        e.target.classList.add('selected');
+    }
+
+    function continueSelection(e) {
+        if (!isSelecting || isProcessing || !gameActive) return;
+        
+        const row = parseInt(e.target.dataset.row);
+        const col = parseInt(e.target.dataset.col);
+        const lastBubble = selectedBubbles[selectedBubbles.length - 1];
+        
+        // Check if adjacent (including diagonals) and same color
+        if (isAdjacent(lastBubble, {row, col}) && 
+            board[row][col] === board[lastBubble.row][lastBubble.col] &&
+            !isSelected({row, col})) {
+            selectedBubbles.push({row, col, element: e.target});
             e.target.classList.add('selected');
         }
+    }
 
-        function continueSelection(e) {
-            if (!isSelecting || isProcessing || !gameActive) return;
-            
-            const row = parseInt(e.target.dataset.row);
-            const col = parseInt(e.target.dataset.col);
+    function handleTouch(e) {
+        if (!gameActive || isProcessing) return;
+        e.preventDefault();
+        const touch = e.touches[0];
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (element && element.classList.contains('bubble')) {
+            const row = parseInt(element.dataset.row);
+            const col = parseInt(element.dataset.col);
+            isSelecting = true;
+            selectedBubbles = [{row, col, element}];
+            element.classList.add('selected');
+        }
+    }
+
+    function handleTouchMove(e) {
+        if (!isSelecting || isProcessing || !gameActive) return;
+        e.preventDefault();
+        const touch = e.touches[0];
+        const element = document.elementFromPoint(touch.clientX, touch.clientY);
+        if (element && element.classList.contains('bubble')) {
+            const row = parseInt(element.dataset.row);
+            const col = parseInt(element.dataset.col);
             const lastBubble = selectedBubbles[selectedBubbles.length - 1];
             
             // Check if adjacent (including diagonals) and same color
             if (isAdjacent(lastBubble, {row, col}) && 
                 board[row][col] === board[lastBubble.row][lastBubble.col] &&
                 !isSelected({row, col})) {
-                selectedBubbles.push({row, col, element: e.target});
-                e.target.classList.add('selected');
-            }
-        }
-
-        function handleTouch(e) {
-            if (!gameActive || isProcessing) return;
-            e.preventDefault();
-            const touch = e.touches[0];
-            const element = document.elementFromPoint(touch.clientX, touch.clientY);
-            if (element && element.classList.contains('bubble')) {
-                const row = parseInt(element.dataset.row);
-                const col = parseInt(element.dataset.col);
-                isSelecting = true;
-                selectedBubbles = [{row, col, element}];
+                selectedBubbles.push({row, col, element});
                 element.classList.add('selected');
             }
         }
+    }
 
-        function handleTouchMove(e) {
-            if (!isSelecting || isProcessing || !gameActive) return;
-            e.preventDefault();
-            const touch = e.touches[0];
-            const element = document.elementFromPoint(touch.clientX, touch.clientY);
-            if (element && element.classList.contains('bubble')) {
-                const row = parseInt(element.dataset.row);
-                const col = parseInt(element.dataset.col);
-                const lastBubble = selectedBubbles[selectedBubbles.length - 1];
-                
-                // Check if adjacent (including diagonals) and same color
-                if (isAdjacent(lastBubble, {row, col}) && 
-                    board[row][col] === board[lastBubble.row][lastBubble.col] &&
-                    !isSelected({row, col})) {
-                    selectedBubbles.push({row, col, element});
-                    element.classList.add('selected');
-                }
-            }
+    function isAdjacent(bubble1, bubble2) {
+        const rowDiff = Math.abs(bubble1.row - bubble2.row);
+        const colDiff = Math.abs(bubble1.col - bubble2.col);
+        // Allow horizontal, vertical, and diagonal connections
+        return (rowDiff <= 1 && colDiff <= 1) && (rowDiff + colDiff > 0);
+    }
+
+    function isSelected(bubble) {
+        return selectedBubbles.some(b => b.row === bubble.row && b.col === bubble.col);
+    }
+
+    document.addEventListener('mouseup', endSelection);
+    document.addEventListener('touchend', endSelection);
+
+    function endSelection() {
+        if (!isSelecting || isProcessing) return;
+        isSelecting = false;
+        
+        if (selectedBubbles.length >= 3) {
+            isProcessing = true;
+            popBubbles();
+        } else {
+            // Reset visual state
+            selectedBubbles.forEach(bubble => {
+                bubble.element.classList.remove('selected');
+            });
+            selectedBubbles = [];
         }
+    }
 
-        function isAdjacent(bubble1, bubble2) {
-            const rowDiff = Math.abs(bubble1.row - bubble2.row);
-            const colDiff = Math.abs(bubble1.col - bubble2.col);
-            // Allow horizontal, vertical, and diagonal connections
-            return (rowDiff <= 1 && colDiff <= 1) && (rowDiff + colDiff > 0);
+    function popBubbles() {
+        const matchSize = selectedBubbles.length;
+        const points = matchSize * 10;
+        score += points;
+        updateScore();
+        
+        // Add time based on match size
+        const bonusTime = Math.floor(matchSize / 2); // 1 second for every 2 bubbles
+        if (bonusTime > 0) {
+            addTime(bonusTime);
         }
-
-        function isSelected(bubble) {
-            return selectedBubbles.some(b => b.row === bubble.row && b.col === bubble.col);
+        
+        // Show combo text for big matches
+        if (matchSize >= 5) {
+            showComboText(matchSize);
         }
-
-        document.addEventListener('mouseup', endSelection);
-        document.addEventListener('touchend', endSelection);
-
-        function endSelection() {
-            if (!isSelecting || isProcessing) return;
-            isSelecting = false;
-            
-            if (selectedBubbles.length >= 3) {
-                isProcessing = true;
-                popBubbles();
-            } else {
-                // Reset visual state
-                selectedBubbles.forEach(bubble => {
-                    bubble.element.classList.remove('selected');
-                });
-                selectedBubbles = [];
-            }
-        }
-
-        function popBubbles() {
-            const matchSize = selectedBubbles.length;
-            const points = matchSize * 10;
-            score += points;
-            updateScore();
-            
-            // Add time based on match size
-            const bonusTime = Math.floor(matchSize / 2); // 1 second for every 2 bubbles
-            if (bonusTime > 0) {
-                addTime(bonusTime);
-            }
-            
-            // Show combo text for big matches
-            if (matchSize >= 5) {
-                showComboText(matchSize);
-            }
-            
-            // Animate popping
-            selectedBubbles.forEach((bubble, index) => {
-                setTimeout(() => {
-                    bubble.element.classList.add('popping');
-                    createStar(bubble.element);
-                }, index * 50);
+        
+        // Animate popping
+        selectedBubbles.forEach((bubble, index) => {
+            setTimeout(() => {
+                bubble.element.classList.add('popping');
+                createStar(bubble.element);
+            }, index * 50);
+        });
+        
+        // Process board after animation
+        setTimeout(() => {
+            // Remove popped bubbles from board
+            selectedBubbles.forEach(bubble => {
+                board[bubble.row][bubble.col] = null;
             });
             
-            // Process board after animation
-            setTimeout(() => {
-                // Remove popped bubbles from board
-                selectedBubbles.forEach(bubble => {
-                    board[bubble.row][bubble.col] = null;
-                });
-                
-                // Apply gravity
-                applyGravity();
-                
-                // Fill empty spaces with new bubbles
-                fillEmptySpaces();
-                
-                // Re-render the board
-                renderBoard();
-                
-                selectedBubbles = [];
-                isProcessing = false;
-            }, 600);
-        }
-
-        function applyGravity() {
-            for (let col = 0; col < boardSize; col++) {
-                // Move all non-null bubbles down
-                let writePosition = boardSize - 1;
-                for (let row = boardSize - 1; row >= 0; row--) {
-                    if (board[row][col] !== null) {
-                        if (row !== writePosition) {
-                            board[writePosition][col] = board[row][col];
-                            board[row][col] = null;
-                        }
-                        writePosition--;
-                    }
-                }
-            }
-        }
-
-        function fillEmptySpaces() {
-            for (let row = 0; row < boardSize; row++) {
-                for (let col = 0; col < boardSize; col++) {
-                    if (board[row][col] === null) {
-                        board[row][col] = getRandomColor();
-                    }
-                }
-            }
-        }
-
-        function createStar(element) {
-            const star = document.createElement('div');
-            star.className = 'floating-star';
-            star.textContent = '⭐';
-            const rect = element.getBoundingClientRect();
-            star.style.left = rect.left + rect.width / 2 - 15 + 'px';
-            star.style.top = rect.top + rect.height / 2 - 15 + 'px';
-            document.body.appendChild(star);
+            // Apply gravity
+            applyGravity();
             
-            setTimeout(() => star.remove(), 2000);
-        }
-
-        function showComboText(matchSize) {
-            const combo = document.createElement('div');
-            combo.className = 'combo-text';
-            combo.textContent = matchSize >= 7 ? 'AMAZING!' : matchSize >= 5 ? 'GREAT!' : 'GOOD!';
-            combo.style.left = '50%';
-            combo.style.top = '50%';
-            combo.style.transform = 'translate(-50%, -50%)';
-            document.body.appendChild(combo);
+            // Fill empty spaces with new bubbles
+            fillEmptySpaces();
             
-            setTimeout(() => combo.remove(), 1000);
-        }
-
-        function updateScore() {
-            document.getElementById('score').textContent = score;
-            if (score > bestScore) {
-                bestScore = score;
-                document.getElementById('best').textContent = bestScore;
-            }
-        }
-
-        function startTimer() {
-            if (timerInterval) clearInterval(timerInterval);
+            // Re-render the board
+            renderBoard();
             
-            timerInterval = setInterval(() => {
-                if (timeRemaining > 0 && gameActive) {
-                    timeRemaining--;
-                    updateTimer();
-                    
-                    // Add pulse effect when time is low
-                    if (timeRemaining <= 10) {
-                        document.getElementById('timer').classList.add('timer-low');
-                    }
-                    
-                    if (timeRemaining === 0) {
-                        endGame();
-                    }
-                }
-            }, 1000);
-        }
-
-        function updateTimer() {
-            document.getElementById('timer').textContent = timeRemaining;
-        }
-
-        function addTime(seconds) {
-            timeRemaining += seconds;
-            updateTimer();
-            
-            // Show time bonus animation
-            const bonus = document.createElement('div');
-            bonus.className = 'time-bonus';
-            bonus.textContent = `+${seconds}s`;
-            bonus.style.left = '50%';
-            bonus.style.top = '40%';
-            bonus.style.transform = 'translateX(-50%)';
-            document.body.appendChild(bonus);
-            
-            setTimeout(() => bonus.remove(), 1000);
-        }
-
-        function endGame() {
-            gameActive = false;
-            if (timerInterval) {
-                clearInterval(timerInterval);
-                timerInterval = null;
-            }
-            
-            document.getElementById('finalScore').textContent = score;
-            
-            if (score > bestScore) {
-                document.getElementById('newBest').style.display = 'block';
-                document.getElementById('newBest').textContent = '🎉 New Best Score! 🎉';
-            } else {
-                document.getElementById('newBest').style.display = 'none';
-            }
-            
-            document.getElementById('gameOverOverlay').style.display = 'flex';
-        }
-
-        function startNewGame() {
-            score = 0;
-            timeRemaining = 60;
-            gameActive = true;
-            updateScore();
-            updateTimer();
-            document.getElementById('timer').classList.remove('timer-low');
-            document.getElementById('gameOverOverlay').style.display = 'none';
             selectedBubbles = [];
-            isSelecting = false;
             isProcessing = false;
-            initBoard();
-            startTimer();
-        }
+        }, 600);
+    }
 
-        // Initialize the game when page loads
-        window.addEventListener('load', () => {
-            initBoard();
-            updateTimer();
-            // Auto-start the game
-            startNewGame();
-        });
-    </script>
+    function applyGravity() {
+        for (let col = 0; col < boardSize; col++) {
+            // Move all non-null bubbles down
+            let writePosition = boardSize - 1;
+            for (let row = boardSize - 1; row >= 0; row--) {
+                if (board[row][col] !== null) {
+                    if (row !== writePosition) {
+                        board[writePosition][col] = board[row][col];
+                        board[row][col] = null;
+                    }
+                    writePosition--;
+                }
+            }
+        }
+    }
+
+    function fillEmptySpaces() {
+        for (let row = 0; row < boardSize; row++) {
+            for (let col = 0; col < boardSize; col++) {
+                if (board[row][col] === null) {
+                    board[row][col] = getRandomColor();
+                }
+            }
+        }
+    }
+
+    function createStar(element) {
+        const star = document.createElement('div');
+        star.className = 'floating-star';
+        star.textContent = '⭐';
+        const rect = element.getBoundingClientRect();
+        star.style.left = rect.left + rect.width / 2 - 15 + 'px';
+        star.style.top = rect.top + rect.height / 2 - 15 + 'px';
+        document.body.appendChild(star);
+        
+        setTimeout(() => star.remove(), 2000);
+    }
+
+    function showComboText(matchSize) {
+        const combo = document.createElement('div');
+        combo.className = 'combo-text';
+        combo.textContent = matchSize >= 7 ? 'AMAZING!' : matchSize >= 5 ? 'GREAT!' : 'GOOD!';
+        combo.style.left = '50%';
+        combo.style.top = '50%';
+        combo.style.transform = 'translate(-50%, -50%)';
+        document.body.appendChild(combo);
+        
+        setTimeout(() => combo.remove(), 1000);
+    }
+
+    function updateScore() {
+        document.getElementById('score').textContent = score;
+        if (score > bestScore) {
+            bestScore = score;
+            document.getElementById('best').textContent = bestScore;
+        }
+    }
+
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        
+        timerInterval = setInterval(() => {
+            if (timeRemaining > 0 && gameActive) {
+                timeRemaining--;
+                updateTimer();
+                
+                // Add pulse effect when time is low
+                if (timeRemaining <= 10) {
+                    document.getElementById('timer').classList.add('timer-low');
+                }
+                
+                if (timeRemaining === 0) {
+                    endGame();
+                }
+            }
+        }, 1000);
+    }
+
+    function updateTimer() {
+        document.getElementById('timer').textContent = timeRemaining;
+    }
+
+    function addTime(seconds) {
+        timeRemaining += seconds;
+        updateTimer();
+        
+        // Show time bonus animation
+        const bonus = document.createElement('div');
+        bonus.className = 'time-bonus';
+        bonus.textContent = `+${seconds}s`;
+        bonus.style.left = '50%';
+        bonus.style.top = '40%';
+        bonus.style.transform = 'translateX(-50%)';
+        document.body.appendChild(bonus);
+        
+        setTimeout(() => bonus.remove(), 1000);
+    }
+
+    function endGame() {
+        gameActive = false;
+        if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+        
+        document.getElementById('finalScore').textContent = score;
+        
+        if (score > bestScore) {
+            document.getElementById('newBest').style.display = 'block';
+            document.getElementById('newBest').textContent = '🎉 New Best Score! 🎉';
+        } else {
+            document.getElementById('newBest').style.display = 'none';
+        }
+        
+        document.getElementById('gameOverOverlay').style.display = 'flex';
+    }
+
+    function resetGame() {
+        score = 0;
+        timeRemaining = 60;
+        gameActive = true;
+        updateScore();
+        updateTimer();
+        document.getElementById('timer').classList.remove('timer-low');
+        document.getElementById('gameOverOverlay').style.display = 'none';
+        selectedBubbles = [];
+        isSelecting = false;
+        isProcessing = false;
+        initGame();
+        startTimer();
+    }
+
+    // Initialize game
+    initGame();
+    // Start timer after a short delay to ensure everything is loaded
+    setTimeout(() => {
+        startTimer();
+    }, 100);
+    
+    // Simple orientation change handler
+    let currentOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+    
+    window.addEventListener('orientationchange', () => {
+        setTimeout(() => {
+            const newOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+            if (newOrientation !== currentOrientation && !isProcessing) {
+                currentOrientation = newOrientation;
+                renderBoard();
+            }
+        }, 300);
+    });
+    
+    // Backup for devices that don't fire orientationchange
+    window.addEventListener('resize', () => {
+        const newOrientation = window.innerWidth > window.innerHeight ? 'landscape' : 'portrait';
+        if (newOrientation !== currentOrientation && !isProcessing) {
+            currentOrientation = newOrientation;
+            setTimeout(() => {
+                if (!isProcessing) {
+                    renderBoard();
+                }
+            }, 300);
+        }
+    });
+</script>
+```
+
 </body>
 </html>
